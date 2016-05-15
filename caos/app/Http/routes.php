@@ -9,4 +9,7 @@ $app->group(['prefix' => 'api/v1','namespace' => 'App\Http\Controllers'], functi
 {
     $app->post('user','UserController@create');
     $app->delete('user/{id}','UserController@delete');
+    $app->post('user/{id}/urls','UserController@urls');
+    $app->get('url/{id}','UrlController@redirectToOrig');
+    $app->delete('url/{id}','UrlController@delete');
 });

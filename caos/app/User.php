@@ -7,11 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = ['id'];
 
     public $timestamps = false;
@@ -19,4 +14,8 @@ class User extends Model
     protected $table = 'users';
 
     public $incrementing = false;
+
+    public function urls(){
+      return $this->hasMany('App\Url');
+    }
 }
