@@ -23,10 +23,10 @@ class UserTest extends TestCase
     }
 
     public function testCreateUrl() {
-      $this->post('/api/v1/user/wills/urls',['url' => 'http://www.google.com.br'])
+      $this->post('/api/v1/user/wills/urls',['url' => 'http://www.google.com.br/'])
          ->seeJson([
            'hits' => 0,
-           'url' => 'http://www.google.com.br'])
+           'url' => 'http://www.google.com.br/'])
          ->assertResponseStatus(201);
     }
 

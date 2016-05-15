@@ -16,8 +16,8 @@ class CreateUrlsTable extends Migration
          $table->increments('id');
          $table->integer('hits')->unsigned()->default(0);
          $table->string('url');
-         $table->string('shortUrl')->unique();
-         $table->integer('user_id');
+         $table->string('shortUrl');
+         $table->string('user_id');
      });
     }
 
