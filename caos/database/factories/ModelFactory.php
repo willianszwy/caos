@@ -13,7 +13,13 @@
 
 $factory->define(App\User::class, function ($faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->email,
+        'id' => $faker->firstName
+    ];
+});
+$factory->define(App\Url::class, function ($faker) {
+    return [
+        'hits' => $faker->randomDigitNotNull,
+        'url' => $faker->url,
+        'shortUrl' => $faker->url
     ];
 });

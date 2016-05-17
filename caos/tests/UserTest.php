@@ -5,33 +5,19 @@ use Laravel\Lumen\Testing\DatabaseTransactions;
 class UserTest extends TestCase
 {
 
-    /**
-     * testa a munipulacao de usuarios.
-     * @return void
-     */
-    public function testCreateResponse(){
+    public function testUserController(){
 
-      $this->json('POST','/api/v1/user', ['id' => 'wills'])
+      $user = factory('App\User')->make();
+
+      $this->json('POST','/api/v1/user', ['id' => $user->id])
            ->seeJsonEquals([
-              'id' => 'wills'
+              'id' => $user->id
            ])
            ->assertResponseStatus(201);
-    }
 
-    public function testDataBaseCheck(){
-      $this->seeInDatabase('users', ['id' => 'wills']);
-    }
+      $this->seeInDatabase('users', ['id' => $user->id]);
 
-    public function testCreateUrl() {
-      $this->post('/api/v1/user/wills/urls',['url' => 'http://www.google.com.br/'])
-         ->seeJson([
-           'hits' => 0,
-           'url' => 'http://www.google.com.br/'])
-         ->assertResponseStatus(201);
-    }
-
-    public function testDeletion(){
-      $response = $this->call('DELETE','api/v1/user/wills');
+      $response = $this->call('DELETE','api/v1/user/' .$user->id);
       $this->assertEquals(204, $response->status());
     }
 

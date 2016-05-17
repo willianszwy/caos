@@ -22,8 +22,8 @@ class UrlController extends Controller
       $url = new \App\Url(['url' => $un->normalize(),'hits' => 0]);
       $user = \App\User::findOrFail($id);
       $user->urls()->save($url);
-
-      $url->shortUrl = $this->generateShortenCode( $url->id );
+      $base_url = config('app.base_url');
+      $url->shortUrl = $base_url . $this->generateShortenCode( $url->id );
       $url->save();
 
       return response()->json($url,201);
@@ -54,7 +54,8 @@ class UrlController extends Controller
     public function redirectToOrig($id){
 
       $url = Url::findOrFail($id);
-
+      $url->hits++;
+      $url->save();
       return redirect()->to($url->url,301);
     }
 

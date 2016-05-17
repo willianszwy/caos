@@ -8,6 +8,8 @@ class Url extends Model
 {
 
     protected $fillable = ['url','shortUrl','hits'];
+    
+    protected $hidden = ['user_id'];
 
     public $timestamps = false;
 

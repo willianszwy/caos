@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Model
 {
 
-    protected $fillable = ['id'];
+    protected $fillable = ['id'];    
 
     public $timestamps = false;
 

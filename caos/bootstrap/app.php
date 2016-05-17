@@ -22,7 +22,7 @@ try {
 $app = new Laravel\Lumen\Application(
     realpath(__DIR__.'/../')
 );
-
+ $app->configure('app');
  $app->withFacades();
 
  $app->withEloquent();
