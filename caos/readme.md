@@ -1,21 +1,17 @@
-## Lumen PHP Framework
+# CAOS URL Shortener
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/lumen-framework/v/unstable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+CAOS é um encurtador de URL feito em PHP, usando framework Lumen e banco de dados MySQL. 
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+O encurtador recebe uma URL e retorna uma URL menor. 
 
-## Official Documentation
 
-Documentation for the framework can be found on the [Lumen website](http://lumen.laravel.com/docs).
+##  ARQUITETURA
 
-## Security Vulnerabilities
+A lógica do algoritmo para permitir links mais curtos é baseada em conversão de bases [10 para 50] na qual seleciona-se os números  
+decimais e o alfabeto maiúsculo e minúsculo, excluindo-se as vogais, para evitar a formação de bad words. Foram tambêm 
+retirados caracteres que podem causar confusão de leitura (exemplo: 0 e O, l e i, etc.), resultando em 50 caracteres �teis
+(1 dígito igual a 50 combinações, 2 dígitos igual a 50 x 50 [2.500], 3 dígitos igual a 50 x 50 x 50 [125.000], 4 dígitos [6.250.000], 
+5 dígitos [312.500.000], e assim por diante. 
+   
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-### License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
